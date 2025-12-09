@@ -67,5 +67,4 @@ for i in ip:
     print("zeroCount: " + str(zeroCount))
     print("")
 
-
 print("zeroCount: " + str(zeroCount))
