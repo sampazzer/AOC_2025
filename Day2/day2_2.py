@@ -1,7 +1,7 @@
 # Find the largest number so I know how many factors to work out for splitting the
 # numbers when finding the patterns.
 
-f = open("practice_input", "r")
+f = open("actual_input", "r")
 ip = f.read().split(",")
 
 
@@ -113,9 +113,8 @@ for nums in ip:
             print(f"dig pattern: {dig_pattern}")
             check_for_pattern = compare_chunks(dig_pattern)
             if check_for_pattern:
-                valid = False
+                valid_ids.append(range_nums)
                 break
-        if valid:
-            valid_ids.append(range_nums)
+
 print(f"valid id's: {valid_ids}")
-print(f"sum of id's: {sum()}")
+print(f"sum of id's: {sum(valid_ids)}")
