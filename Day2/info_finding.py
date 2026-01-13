@@ -91,12 +91,31 @@ I think i actually handle this by accident in my compare_chunks function as any 
 entry is rejected, this means that a 10 digit number split by factor of 10 would be only one element long
 and fail in compare_chunks anyway.
 """
+valid_ids = []
 # taking each range from the input text e.g. 11-22
 for nums in ip:
     split_range = nums.split("-")
     print(split_range)
     # taking each number in that range e.g. if range was 1-10 this will loop with numbers 1,2,3,4,5,6,7,8,9,10
     for range_nums in range(int(split_range[0]), int(split_range[1]) + 1):
-        print(range_nums)
+        print(f"number for test: {range_nums}")
         # need to now take each num and do a for loop for how many factors its digits are divisible by
         # and compare the split lists
+        # valid_ids is the list of valid id's
+        # range_nums is the numbers im testing
+        # num_len is the digit length of that number
+        # factor is the factor im testing for
+        num_len = find_digit_len(range_nums)
+        for factor in factors_of_perm[num_len - 1]:
+            valid = True
+            print(f"testing factor: {factor}")
+            dig_pattern = split_digits(range_nums, factor)
+            print(f"dig pattern: {dig_pattern}")
+            check_for_pattern = compare_chunks(dig_pattern)
+            if check_for_pattern:
+                valid = False
+                break
+        if valid:
+            valid_ids.append(range_nums)
+print(f"valid id's: {valid_ids}")
+print(f"sum of id's: {sum()}")
