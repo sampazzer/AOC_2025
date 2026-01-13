@@ -10,5 +10,13 @@ def split_digits(num_to_be_split, f):
     return chunks
 
 
-split_num = split_digits(223344, 2)
+# compares all the split up chunks, returns True if they are the same
+def compare_chunks(chunk_list):
+    res = all(chunk_list)
+    return res
+
+
+split_num = split_digits(121212, 2)
+chunks_same = compare_chunks(split_num)
 print(split_num)
+print(chunks_same)

@@ -1,7 +1,7 @@
 # Find the largest number so I know how many factors to work out for splitting the
 # numbers when finding the patterns.
 
-f = open("actual_input", "r")
+f = open("practice_input", "r")
 ip = f.read().split(",")
 
 
@@ -27,9 +27,11 @@ def split_digits(num_to_be_split, f):
     return chunks
 
 
-# text = "ABCDEFGH"
-# n = 2
-# chunks = [text[i:i+n] for i in range(0, len(text), n)]
+# compares all the split up chunks, returns True if they are the same
+def compare_chunks(chunk_list):
+    res = all(chunk_list)
+    return res
+
 
 # finding largest number and finding how many digits it is
 num_store = 0
@@ -54,9 +56,19 @@ for fnums in range(1, int_num_digit_length + 1):
             factors_of_temp.append(ffnums)
     factors_of_perm.append(factors_of_temp)
 
-print(f"factors of {fnums}: {factors_of_perm}")
+print(f"factors: {factors_of_perm}")
 
 # UP TO THIS POINT I HAVE A LARGEST DIGIT NUMBER AND ALL THE FACTORS UP TO AND
 # INCLUDING THAT DIGIT NUMBER E.G. 52355 LARGEST DIGIT WOULD BE 5, I HAVE ALL
 # FACTORS OF NUMBERS 1 THROUGH 5
 # factors_of_perm = all the factors of each digit number
+
+# taking each range from the input text
+for nums in ip:
+    split_range = nums.split("-")
+    print(split_range)
+    # taking each number in that range e.g. if range was 1-10 this will loop 1,2,3,4,5,6,7,8,9,10
+    for range_nums in range(int(split_range[0]), int(split_range[1]) + 1):
+        print(range_nums)
+        # need to now take each num and for loop for how many factors its digits are divisible by
+        # and compare the split lists
