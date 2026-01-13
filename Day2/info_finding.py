@@ -5,6 +5,7 @@ f = open("practice_input", "r")
 ip = f.read().split(",")
 
 
+# FUNCTIONS
 # get second number in the range
 def find_largest_digit_number(x):
     splitx = x.split("-")
@@ -33,6 +34,7 @@ def compare_chunks(chunk_list):
     return res
 
 
+# FIRST OPERATION
 # finding largest number and finding how many digits it is
 num_store = 0
 for nums in ip:
@@ -63,12 +65,17 @@ print(f"factors: {factors_of_perm}")
 # FACTORS OF NUMBERS 1 THROUGH 5
 # factors_of_perm = all the factors of each digit number
 
-# taking each range from the input text
+# SECOND OPERATION
+"""
+TODO: If we have single digit numbers, it may pass because the list only has 1 thing to compare with all()
+I assume single digits are not patterns.
+"""
+# taking each range from the input text e.g. 11-22
 for nums in ip:
     split_range = nums.split("-")
     print(split_range)
-    # taking each number in that range e.g. if range was 1-10 this will loop 1,2,3,4,5,6,7,8,9,10
+    # taking each number in that range e.g. if range was 1-10 this will loop with numbers 1,2,3,4,5,6,7,8,9,10
     for range_nums in range(int(split_range[0]), int(split_range[1]) + 1):
         print(range_nums)
-        # need to now take each num and for loop for how many factors its digits are divisible by
+        # need to now take each num and do a for loop for how many factors its digits are divisible by
         # and compare the split lists
