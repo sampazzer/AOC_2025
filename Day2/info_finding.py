@@ -29,8 +29,23 @@ def split_digits(num_to_be_split, f):
 
 
 # compares all the split up chunks, returns True if they are the same
+# it loops only until the second the last one as we dont need to compare the last one with anything
 def compare_chunks(chunk_list):
-    res = all(chunk_list)
+    # this is for indexing and comparing the chunk next to the one in the for loop
+    count = 1
+    res = False
+    # if its only a single digit full number e.g. the chunk_list is only 1, then it doesnt even enter the for loop
+    # and returns false which is what we want.
+    for num in range(len(chunk_list) - 1):
+        chunk = chunk_list[num]
+        print(len(chunk))
+        if chunk == chunk_list[count]:
+            res = True
+        else:
+            # breaks if the element next to it isnt the same
+            res = False
+            break
+        count += 1
     return res
 
 
@@ -50,9 +65,10 @@ int_num_digit_length = int(str_num_digit_length)
 # factors of perm will be the factors of a number going up from 1 (it is indexed to 0)
 factors_of_perm = []
 for fnums in range(1, int_num_digit_length + 1):
-    print(fnums)
+    print(f"fnums: {fnums}")
     factors_of_temp = []
     for ffnums in range(1, fnums + 1):
+        print(f"ffnums: {ffnums}")
         # print(f"actualnum {fnums} / factor {ffnums}")
         if fnums % ffnums == 0:
             factors_of_temp.append(ffnums)
@@ -67,8 +83,13 @@ print(f"factors: {factors_of_perm}")
 
 # SECOND OPERATION
 """
-TODO: If we have single digit numbers, it may pass because the list only has 1 thing to compare with all()
+TODO:
+[x] If we have single digit numbers, it may pass because the list only has 1 thing to compare with all()
 I assume single digits are not patterns.
+[ ] Factors dont want to include the top factor because then its not a pattern as its not split at all.
+I think i actually handle this by accident in my compare_chunks function as any chunk list that only has 1
+entry is rejected, this means that a 10 digit number split by factor of 10 would be only one element long
+and fail in compare_chunks anyway.
 """
 # taking each range from the input text e.g. 11-22
 for nums in ip:
